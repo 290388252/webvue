@@ -14,7 +14,9 @@
         </div>
       </div>
     </div>
-    <div class="content">content</div>
+    <div class="content">
+      <router-view></router-view>
+    </div>
     <div class="footer">© 2017 yanchao CMP</div>
   </div>
 </template>
@@ -48,7 +50,7 @@ export default {
           .text
             cursor pointer
             &:hover
-              color: red
+              color: #41B883
 
   .footer
     background #e3e4e8
