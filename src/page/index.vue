@@ -18,7 +18,7 @@
           <h2>最新产品</h2>
           <ul>
             <li v-for="item in newsList">
-              <a :href="item.url">{{item.title}}</a>
+              <a :href="item.url" class="newsitem">{{item.title}}</a>
             </li>
           </ul>
         </div>
@@ -81,6 +81,12 @@
             background red
             color white
             font-size 9px
+          .newsitem
+            display: inline-block
+            width 29%
+            text-overflow ellipsis
+            overflow hidden
+            white-space: nowrap
     .index-right
       float left
       width 75%
@@ -124,33 +130,17 @@
 <script type="text/ecmascript-6">
     export default{
         created() {
-            this.$http.get('getList')
+            this.$http.get('api/getNewsList')
               .then((data) => {
-                console.log(data);
+                console.log(data.body);
+                this.newsList = data.body;
               }, (err) => {
                 console.log(err);
               });
         },
         data() {
             return {
-                newsList: [
-                  {
-                    title: '数据统计',
-                    url: 'http://starcraft.com'
-                  },
-                  {
-                    title: '数据预测',
-                    url: 'http://warcraft.com'
-                  },
-                  {
-                    title: '流量分析',
-                    url: 'http://overwatch.com'
-                  },
-                  {
-                    title: '广告发布',
-                    url: 'http://hearstone.com'
-                  }
-                ],
+                newsList: [],
                 productList: {
                     pc: {
                       title: 'PC产品',
