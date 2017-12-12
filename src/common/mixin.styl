@@ -1,0 +1,8 @@
+bg-image($url)
+    background-image: url('../assets/images/' + $url + ".png")
+    background-size 72px 72px
+    background-repeat no-repeat
+    @media (-webkit-min-device-pixel-ratio: 3),(min-device-pixel-ratio: 3)
+      background-image: url('../assets/images/' + $url + ".png")
+      background-size 72px 72px
+      background-repeat no-repeat

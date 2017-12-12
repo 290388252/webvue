@@ -25,8 +25,8 @@
       </div>
       <div class="index-right">
         <div class="index-board-list">
-          <div class="index-board-item" v-for="item in boardList">
-            <div class="index-board-item-inner">
+          <div class="index-board-item" v-for="(item, index) in boardList">
+            <div class="index-board-item-inner" :class="'index-board-' + item.id">
               <h2>{{item.title}}</h2>
               <p>{{item.description}}</p>
               <div class="index-board-button">
@@ -40,6 +40,7 @@
 </template>
 
 <style lang="stylus" rel="stylesheet/stylus">
+  @import "../common/mixin.styl";
   .index-wrap
     width 100%
     margin 0 auto
@@ -52,6 +53,8 @@
         margin: 15px
         background: #fff
         box-shadow: 0 0 1px #ddd
+        border-top-left-radius 5px
+        border-top-right-radius 5px
         .hr
           margin-bottom: 20px;
           background #ededed
@@ -79,6 +82,7 @@
             color white
             font-size 9px
     .index-right
+      float left
       width 75%
       .index-board-item
         float left
@@ -87,10 +91,17 @@
         box-shadow: 0 0 1px #ddd;
         border-radius 5px
         padding 20px
-        margin-right 20px
-        margin-bottom 20px
+        margin 0 20px 20px 0
         .index-board-item-inner
-          padding-left: 30%;
+          padding-left: 30%
+          &.index-board-car
+            bg-image('1')
+          &.index-board-loud
+            bg-image('2')
+          &.index-board-earth
+            bg-image('3')
+          &.index-board-hill
+            bg-image('4')
           h2
             font-weight: bold
             color: #222;
@@ -125,7 +136,7 @@
                   },
                   {
                     title: '流量分析',
-                    url: 'http://overwatch.com',
+                    url: 'http://overwatch.com'
                   },
                   {
                     title: '广告发布',
