@@ -24,6 +24,7 @@
         </div>
       </div>
       <div class="index-right">
+        <slide-show :slides="slides"></slide-show>
         <div class="index-board-list">
           <div class="index-board-item" v-for="(item, index) in boardList">
             <div class="index-board-item-inner" :class="'index-board-' + item.id">
@@ -42,10 +43,9 @@
 <style lang="stylus" rel="stylesheet/stylus">
   @import "../common/mixin.styl";
   .index-wrap
-    width 100%
+    width 1200px
     margin 0 auto
     overflow: hidden
-    background #ededed
     .index-left
       float left
       width 25%
@@ -92,7 +92,7 @@
       width 75%
       .index-board-item
         float left
-        width 33%
+        width 37%
         background #fff
         box-shadow: 0 0 1px #ddd;
         border-radius 5px
@@ -128,6 +128,7 @@
 </style>
 
 <script type="text/ecmascript-6">
+  import slideShow from '../components/slideshow.vue';
     export default{
         created() {
             this.$http.get('api/getNewsList')
@@ -141,6 +142,28 @@
         data() {
             return {
                 newsList: [],
+                slides: [
+                  {
+                    src: require('../assets/slideShow/pic1.jpg'),
+                    title: 'react',
+                    href: 'detail/analysis'
+                  },
+                  {
+                    src: require('../assets/slideShow/pic2.jpg'),
+                    title: 'Android',
+                    href: 'detail/count'
+                  },
+                  {
+                    src: require('../assets/slideShow/pic3.jpg'),
+                    title: 'ACM',
+                    href: 'http://xxx.xxx.com'
+                  },
+                  {
+                    src: require('../assets/slideShow/pic4.jpg'),
+                    title: 'react native',
+                    href: 'detail/forecast'
+                  }
+                ],
                 productList: {
                     pc: {
                       title: 'PC产品',
@@ -219,6 +242,9 @@
                 }
               ]
           };
+        },
+        components: {
+          slideShow
         }
     };
 </script>

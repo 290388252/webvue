@@ -14,7 +14,7 @@
         </div>
       </div>
     </div>
-    <div class="content">
+    <div class="content" style="background: #ededed">
       <keep-alive>
         <router-view></router-view>
       </keep-alive>
