@@ -123,6 +123,14 @@
 
 <script type="text/ecmascript-6">
     export default{
+        created() {
+            this.$http.get('getList')
+              .then((data) => {
+                console.log(data);
+              }, (err) => {
+                console.log(err);
+              });
+        },
         data() {
             return {
                 newsList: [
