@@ -24,7 +24,7 @@
         </div>
       </div>
       <div class="index-right">
-        <slide-show :slides="slides"></slide-show>
+        <slide-show :slides="slides" @onChange="onChangeSth"></slide-show>
         <div class="index-board-list">
           <div class="index-board-item" v-for="(item, index) in boardList">
             <div class="index-board-item-inner" :class="'index-board-' + item.id">
@@ -141,6 +141,7 @@
         },
         data() {
             return {
+                changeTime: 0,
                 newsList: [],
                 slides: [
                   {
@@ -245,6 +246,11 @@
         },
         components: {
           slideShow
+        },
+        methods: {
+          onChangeSth() {
+            console.log('slide child components was changed' + this.changeTime++ + '次');
+          }
         }
     };
 </script>

@@ -1,12 +1,12 @@
 <template>
-  <div class="slide-show">
+  <div class="slide-show" @mouseover="clearInv" @mouseout="runInv">
     <div class="slide-img">
       <a :href="slides[nowIndex].href">
         <transition name="slide-trans">
-          <img :src="slides[nowIndex].src">
+          <img v-if="isShow" :src="slides[nowIndex].src">
         </transition>
         <transition name="slide-trans-old">
-          <img :src="slides[nowIndex].src">
+          <img v-if="!isShow" :src="slides[nowIndex].src">
         </transition>
       </a>
     </div>
@@ -35,7 +35,8 @@
     },
     data() {
       return {
-        nowIndex: 1
+        nowIndex: 1,
+        isShow: true
       };
     },
     computed: {
@@ -56,12 +57,20 @@
     },
     methods: {
       goto(index) {
-        this.nowIndex = index;
+        this.isShow = false;
+        setTimeout(() => {
+          this.isShow = true;
+          this.nowIndex = index;
+          this.$emit('onChange', index);
+        }, 10);
       },
       runInv() {
         this.invId = setInterval(() => {
           this.goto(this.nextIndex);
         }, this.inv);
+      },
+      clearInv() {
+        clearInterval(this.invId);
       }
     },
     mounted() {
