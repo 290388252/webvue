@@ -41,7 +41,7 @@
     name: 'app',
     data() {
         return {
-          loginShow: true,
+          loginShow: false,
           regShow: false,
           aboutShow: false
         };

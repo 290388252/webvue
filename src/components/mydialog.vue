@@ -33,8 +33,8 @@
       z-index: 10
       top: 20%
       left 35%
-      width 34%
-      height 34%
+      width 504px
+      height 230px
       border-radius 5px
       background whitesmoke
       border: 2px solid #464068;
