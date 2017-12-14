@@ -249,7 +249,7 @@
         },
         methods: {
           onChangeSth() {
-            console.log('slide child components was changed' + this.changeTime++ + '次');
+//            console.log('slide child components was changed' + this.changeTime++ + '次');
           }
         }
     };

@@ -1,11 +1,12 @@
 <template>
   <div>
+    <mydialog :dialogShow="dialogShow"></mydialog>
     <div class="header">
       <div class="app-head-inner">
         <img src="../src/assets/logo.png" alt="">
         <div class="head-nav">
           <ul class="nav-list">
-            <li class="text">登录</li>
+            <li class="text" @click="login">登录</li>
             <li class="nav-pile">|</li>
             <li class="text">注册</li>
             <li class="nav-pile">|</li>
@@ -24,8 +25,22 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import mydialog from './components/mydialog.vue';
   export default {
-    name: 'app'
+    name: 'app',
+    data() {
+        return {
+          dialogShow: false
+        };
+    },
+    methods: {
+      login() {
+        this.dialogShow = true;
+      }
+    },
+    components: {
+        mydialog
+    }
   };
 </script>
 
