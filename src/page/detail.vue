@@ -4,7 +4,7 @@
         <div class="product-board">
           <img :src="productsIcon" alt="">
           <ul>
-            <router-link v-for="item in products" :to="{ path: item.path }" tag="li" active-class="active">
+            <router-link v-for="item in products" :to="{ path: item.path }" tag="li" active-class="active" class="detail-li">
               {{ item.name }}
             </router-link>
           </ul>
@@ -31,6 +31,7 @@
         background white
         padding 20px 0
         li
+          list-style: none;
           text-align left
           cursor pointer
           padding-top 10px

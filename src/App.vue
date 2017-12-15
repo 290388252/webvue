@@ -100,6 +100,7 @@
         .nav-list
           float: left
           li
+            list-style: none;
             float: left
             margin-right 5px
             color whitesmoke
