@@ -23,22 +23,22 @@ export default new Router({
       redirect: '/detail/count',
       children: [
         {
-          path: 'analysis',
+          path: '/detail/analysis',
           name: 'analysis',
           component: analysis
         },
         {
-          path: 'count',
+          path: '/detail/count',
           name: 'count',
           component: count
         },
         {
-          path: 'forecast',
+          path: '/detail/forecast',
           name: 'forecast',
           component: forecast
         },
         {
-          path: 'publish',
+          path: '/detail/publish',
           name: 'publish',
           component: publish
         }
