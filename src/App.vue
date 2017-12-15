@@ -1,7 +1,7 @@
 <template>
   <div>
     <mydialog :isShow="loginShow" @on-close="closeDialog('loginShow')">
-      <logform></logform>
+      <logform @has-log="onSuccessLogin"></logform>
     </mydialog>
     <mydialog :isShow="regShow" @on-close="closeDialog('regShow')">
       <regform></regform>
@@ -14,10 +14,14 @@
         <img src="../src/assets/logo.png" alt="">
         <div class="head-nav">
           <ul class="nav-list">
-            <li class="text" @click="login">登录</li>
-            <li class="nav-pile">|</li>
-            <li class="text" @click="reg">注册</li>
-            <li class="nav-pile">|</li>
+            <li class="text" @click="login" v-if="username === ''">登录</li>
+            <li class="nav-pile" v-if="username === ''">|</li>
+            <li class="text" @click="reg" v-if="username === ''">注册</li>
+            <li class="nav-pile" v-if="username === ''">|</li>
+            <li class="text" v-if="username !== ''">{{username}}</li>
+            <li class="nav-pile" v-if="username !== ''">|</li>
+            <li class="text" v-if="username !== ''">退出</li>
+            <li class="nav-pile" v-if="username !== ''">|</li>
             <li class="text" @click="about">关于</li>
           </ul>
         </div>
@@ -43,7 +47,9 @@
         return {
           loginShow: false,
           regShow: false,
-          aboutShow: false
+          aboutShow: false,
+          username: '',
+          userId: ''
         };
     },
     methods: {
@@ -58,6 +64,10 @@
       },
       closeDialog(show) {
         this[show] = false;
+      },
+      onSuccessLogin(data) {
+          this.closeDialog('loginShow');
+          this.username = data.username;
       }
     },
     components: {
@@ -85,11 +95,13 @@
         float: right
         margin-right 5px
         .nav-list
+          float: left
           li
             float: left
             margin-right 5px
             color whitesmoke
             font-size 14px
+            height 20px
           .text
             cursor pointer
             &:hover
