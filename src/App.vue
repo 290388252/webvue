@@ -81,7 +81,7 @@
   };
 </script>
 
-<style lang="stylus" rel="stylesheet/stylus">
+<style scoped lang="stylus" rel="stylesheet/stylus">
   .header
     background: #363636;
     width 1370px

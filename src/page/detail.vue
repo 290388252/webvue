@@ -18,7 +18,7 @@
     </div>
 </template>
 
-<style lang="stylus" rel="stylesheet/stylus">
+<style scoped lang="stylus" rel="stylesheet/stylus">
   .detail-wrap
     width 1370px
     margin: 0 auto;
