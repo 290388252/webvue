@@ -7,11 +7,14 @@
       <regform></regform>
     </mydialog>
     <mydialog :isShow="aboutShow" @on-close="closeDialog('aboutShow')">
-      <p style="position: absolute; margin: 20px">本报告在调研数据的基础上，采用定性与定量相结合的方式深入分析了专车市场发展的驱动因素与阻碍因素、专车市场背后的产业格局、专车企业的竞争格局、用户对专车市场的依赖程度、专车对其他交通工具运力的补充效应等，通过这五个章节的研究反映专车市场的发展态势和面临的问题。报告力求客观、深入、准确地反映中国专车市场发展情况，为政府、企事业单位和社会各界提供决策依据。</p>
+      <p style="position: absolute; margin: 20px">
+        本报告在调研数据的基础上，采用定性与定量相结合的方式深入分析了专车市场发展的驱动因素与阻碍因素、专车市场背后的产业格局、专车企业的竞争格局、用户对专车市场的依赖程度、专车对其他交通工具运力的补充效应等，通过这五个章节的研究反映专车市场的发展态势和面临的问题。报告力求客观、深入、准确地反映中国专车市场发展情况，为政府、企事业单位和社会各界提供决策依据。</p>
     </mydialog>
     <div class="header">
       <div class="app-head-inner">
-        <img src="../src/assets/logo.png" alt="">
+        <router-link :to="{path: '/'}">
+          <img src="../src/assets/logo.png" alt="">
+        </router-link>
         <div class="head-nav">
           <ul class="nav-list">
             <li class="text" @click="login" v-if="username === ''">登录</li>
@@ -44,13 +47,13 @@
   export default {
     name: 'app',
     data() {
-        return {
-          loginShow: false,
-          regShow: false,
-          aboutShow: false,
-          username: '',
-          userId: ''
-        };
+      return {
+        loginShow: false,
+        regShow: false,
+        aboutShow: false,
+        username: '',
+        userId: ''
+      };
     },
     methods: {
       login() {
@@ -66,14 +69,14 @@
         this[show] = false;
       },
       onSuccessLogin(data) {
-          this.closeDialog('loginShow');
-          this.username = data.username;
+        this.closeDialog('loginShow');
+        this.username = data.username;
       }
     },
     components: {
-        mydialog,
-        logform,
-        regform
+      mydialog,
+      logform,
+      regform
     }
   };
 </script>
@@ -81,7 +84,7 @@
 <style lang="stylus" rel="stylesheet/stylus">
   .header
     background: #363636;
-    width 100%
+    width 1370px
     height 80px
     line-height: 80px
     .app-head-inner
@@ -110,7 +113,7 @@
   .footer
     background #e3e4e8
     text-align center
-    width 100%
+    width 1370px
     height 80px
     line-height 80px
     font-size 14px
