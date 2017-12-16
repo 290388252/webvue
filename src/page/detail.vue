@@ -21,11 +21,11 @@
 <style scoped lang="stylus" rel="stylesheet/stylus">
   .detail-wrap
     width 1370px
-    margin: 0 auto;
+    padding: 20px;
     overflow: hidden;
     .detail-left
       float left
-      width 23%
+      width 20%
       text-align: center
       .product-board
         background white
@@ -46,6 +46,7 @@
     .detail-right
       float left
       width 75%
+      margin-left 20px
 </style>
 
 <script type="text/ecmascript-6">
