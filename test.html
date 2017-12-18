@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>倒计时</title>
+  <script type="text/ecmascript-6" src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+  <style>
+    body{
+      padding:0;
+      margin:0;
+    }
+    .a{
+      position:fixed;
+      z-index:1;
+      width:25%;
+      height:50px;
+      background:#eee;
+      top:30%;
+      left:30%;
+      display:none;
+    }
+    .d{
+      position: absolute;
+      background:blue;
+      width:50px;
+      height:40px;
+      color:#fff;
+      text-align:center;
+      border:0;
+      left:42%;
+      bottom:5px;
+    }
+    .e{
+      position:fixed;
+      z-index:1;
+      width:25%;
+      height:50px;
+      background:gray;
+      top:30%;
+      left:30%;
+      display:none;
+    }
+    b{
+      color:blue;
+    }
+    .c{
+      position: absolute;
+      text-align:center;
+      top: 12px;
+      left:32%;
+    }
+  </style>
+</head>
+<body>
+
+<div class="a">
+  <div class="c">
+    请认真读以下条例
+    <b id="s">5</b><label>s</label>
+  </div>
+</div>
+<button class="e">我同意</button>
+</body>
+<script type="text/ecmascript-6">
+  $(()=>{
+    let a1;
+    let a2;
+    $(".e").hide();
+    a1 = setTimeout(()=>{
+      $(".a").fadeIn("slow");
+      a2 = setInterval(()=>{
+        $("#s").text(Number($("#s").text())-1);
+        if($("#s").text() == "0"){
+          clearInterval(a2);
+          $(".e").show();
+          $(".a").hide();
+        }
+      },500);
+    },500);
+
+    if($(".a").css("display")=="block"){
+      clearTimeout(a1);
+    }
+
+    if($("#s").text() != "0"){
+      $(".e").click(()=>{
+        clearInterval(a2);
+        $(".e").hide();
+      });
+    }
+  });
+</script>
+</html>
