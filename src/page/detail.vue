@@ -47,6 +47,8 @@
       float left
       width 75%
       margin-left 20px
+      background white
+
 </style>
 
 <script type="text/ecmascript-6">
