@@ -19,7 +19,7 @@
       <div class="sales-board-formin">
         <div class="sales-board-formin-left">有效时间：</div>
         <div class="sales-board-formin-right">
-          <v-chooser :selections="periodList" @on-change="onParamChange('periodList', $event)"></v-chooser>
+          <v-chooser :selections='periodLists' @on-change="onParamChange('periodLists', $event)"></v-chooser>
         </div>
       </div>
       <div class="sales-board-formin">
@@ -109,7 +109,7 @@
   export default{
       data() {
           return {
-            periodList: [
+            periodLists: [
               {
                 label: '半年',
                 value: 0

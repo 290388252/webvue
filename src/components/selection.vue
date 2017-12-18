@@ -85,7 +85,7 @@
             chooseSelection(index) {
                 this.nowIndex = index;
                 this.isDrop = false;
-                console.log(this.selections[this.nowIndex]);
+                console.log(this.selections);
                 this.$emit('on-change', this.selections[this.nowIndex]);
             }
         }
