@@ -4,7 +4,32 @@
       <h2 class="sales-board-intro-h2">数据预测</h2>
       <p class="sales-board-intro-p">未来，大数据会变得越来越重要，其核心应用预测也会成为互联网行业以及产业变革的重要力量，我们很有必要对数据预测及其分析方法进行全面且深入的了解。在这一点上，《大数据预测》是本很好的读物，适合大数据所有相关行业的人阅读。</p>
     </div>
-    <div class="sales-board-form"></div>
+    <div class="sales-board-form">
+      <div class="sales-board-formin">
+        <div class="sales-board-formin-left">购买数量：</div>
+        <div class="sales-board-formin-right"></div>
+      </div>
+      <div class="sales-board-formin">
+        <div class="sales-board-formin-left">媒介：</div>
+        <div class="sales-board-formin-right"></div>
+      </div>
+      <div class="sales-board-formin">
+        <div class="sales-board-formin-left">有效时间：</div>
+        <div class="sales-board-formin-right">一年</div>
+      </div>
+      <div class="sales-board-formin">
+        <div class="sales-board-formin-left">总价：</div>
+        <div class="sales-board-formin-right">500元</div>
+      </div>
+      <div class="sales-board-formin">
+        <div class="sales-board-formin-left">&nbsp;</div>
+        <div class="sales-board-formin-right">
+          <button>
+            立即购买
+          </button>
+        </div>
+      </div>
+    </div>
     <div class="sales-board-line"></div>
     <div class="sales-board-des">
       <h2 class="sales-board-des-h2">产品说明</h2>
@@ -33,6 +58,13 @@
     .sales-board-form
       padding: 30px 20px
       font-size: 14px
+      .sales-board-formin
+        padding-top 10px
+        padding-bottom 10px
+        .sales-board-formin-left
+          display inline-block
+        .sales-board-formin-right
+          display inline-block
     .sales-board-line
       background #ededed
       width 100%
