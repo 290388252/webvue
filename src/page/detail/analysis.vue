@@ -8,7 +8,9 @@
     <div class="sales-board-form">
       <div class="sales-board-formin">
         <div class="sales-board-formin-left">购买数量：</div>
-        <div class="sales-board-formin-right"></div>
+        <div class="sales-board-formin-right">
+          <counter></counter>
+        </div>
       </div>
       <div class="sales-board-formin">
         <div class="sales-board-formin-left">产品类型：</div>
@@ -19,12 +21,14 @@
       <div class="sales-board-formin">
         <div class="sales-board-formin-left">有效时间：</div>
         <div class="sales-board-formin-right">
-          <v-chooser :selections='periodLists' @on-change="onParamChange('periodLists', $event)"></v-chooser>
+          <vchooser :selections="periodLists" @on-change="onParamChange('buyType', $event)" style="margin-top: -5px"></vchooser>
         </div>
       </div>
       <div class="sales-board-formin">
         <div class="sales-board-formin-left">产品版本：</div>
-        <div class="sales-board-formin-right"></div>
+        <div class="sales-board-formin-right">
+          <vmultiplychooser :selections="versionList" @on-change="onParamChange('versions', $event)" style="margin-top: -5px"></vmultiplychooser>
+        </div>
       </div>
     </div>
     <div class="sales-board-line"></div>
@@ -105,10 +109,27 @@
 
 <script type="text/ecmascript-6">
   import VSelection from '../../components/selection.vue';
-  import VChooser from '../../components/chooser.vue';
+  import vchooser from '../../components/chooser.vue';
+  import vmultiplychooser from '../../components/multiplychooser.vue';
+  import counter from '../../components/counter.vue';
+
   export default{
       data() {
           return {
+            versionList: [
+              {
+                label: '客户版',
+                value: 0
+              },
+              {
+                label: '代理商版',
+                value: 1
+              },
+              {
+                label: '专家版',
+                value: 2
+              }
+            ],
             periodLists: [
               {
                 label: '半年',
@@ -141,7 +162,9 @@
       },
       components: {
         VSelection,
-        VChooser
+        vchooser,
+        vmultiplychooser,
+        counter
       },
       methods: {
         onParamChange(attr, val) {

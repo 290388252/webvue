@@ -1,8 +1,5 @@
 <template>
     <div class="chooser-component">
-      <div class="chooser-show">
-        <span>{{selections[nowIndex].label}}</span>
-      </div>
       <div class="chooser-list">
         <ul v-for="(item, index) in selections">
           <li @click="chooseSelection(index)" :class="{active: index===nowIndex}">
