@@ -2,7 +2,7 @@
     <div class="counter-component">
       <button class="counter-btn">-</button>
       <div class="counter-show">
-        <input type="text">
+        <input type="text" class="counter-show-input">
       </div>
       <button class="counter-btn">+</button>
     </div>
@@ -11,10 +11,17 @@
 <style lang="stylus" rel="stylesheet/stylus">
   .counter-component
     .counter-btn
-      display inline-block
+      float: left
+      color white
+      border-radius 5px
+      font-size 12px
+      background #41B883
+      width 35px
+      height 25px
     .counter-show
-      display inline-block
-
+      float: left
+      .counter-show-input
+        width 25px
 </style>
 
 <script type="text/ecmascript-6">
