@@ -7,7 +7,9 @@
     <div class="sales-board-form">
       <div class="sales-board-formin">
         <div class="sales-board-formin-left">购买数量：</div>
-        <div class="sales-board-formin-right"></div>
+        <div class="sales-board-formin-right">
+          <counter style="margin-top: -5px"></counter>
+        </div>
       </div>
       <div class="sales-board-formin">
         <div class="sales-board-formin-left">媒介：</div>
@@ -15,7 +17,9 @@
       </div>
       <div class="sales-board-formin">
         <div class="sales-board-formin-left">有效时间：</div>
-        <div class="sales-board-formin-right">一年</div>
+        <div class="sales-board-formin-right">
+          <vchooser :selections="periodLists" @on-change="onParamChange('periods', $event)" style="margin-top: -5px"></vchooser>
+        </div>
       </div>
       <div class="sales-board-formin">
         <div class="sales-board-formin-left">总价：</div>
@@ -84,5 +88,35 @@
 </style>
 
 <script type="text/ecmascript-6">
-    export default{};
+  import vchooser from '../../components/chooser.vue';
+  import counter from '../../components/counter.vue';
+    export default{
+      data() {
+        return {
+          periodLists: [
+            {
+              label: '半年',
+              value: 0
+            },
+            {
+              label: '一年',
+              value: 1
+            },
+            {
+              label: '三年',
+              value: 2
+            }
+          ]
+        };
+      },
+      components: {
+        vchooser,
+        counter
+      },
+      methods: {
+        onParamChange(attr, val) {
+          this[attr] = val;
+        }
+      }
+    };
 </script>

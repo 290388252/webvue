@@ -1,10 +1,10 @@
 <template>
     <div class="counter-component">
-      <button class="counter-btn">-</button>
+      <button class="counter-btn" @click="minus">-</button>
       <div class="counter-show">
-        <input type="text" class="counter-show-input">
+        <input type="text" class="counter-show-input" v-model="number">
       </div>
-      <button class="counter-btn">+</button>
+      <button class="counter-btn" @click="adds">+</button>
     </div>
 </template>
 
@@ -21,9 +21,43 @@
     .counter-show
       float: left
       .counter-show-input
-        width 25px
+        width: 45px;
+        height: 20px;
+        margin-top: 1px;
+        border 2px solid #41B883;
+        border-radius 2px
 </style>
 
 <script type="text/ecmascript-6">
-    export default{};
+    export default{
+      props: {
+        max: {
+          type: Number,
+          default: 5
+        },
+        min: {
+          type: Number,
+          default: 1
+        }
+      },
+      data() {
+        return {
+          number: this.min
+        };
+      },
+      methods: {
+        adds() {
+          if (this.number >= this.max) {
+              return;
+          }
+          this.number ++;
+        },
+        minus() {
+          if (this.number <= this.min) {
+            return;
+          }
+          this.number --;
+        }
+      }
+    };
 </script>

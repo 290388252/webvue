@@ -7,15 +7,21 @@
     <div class="sales-board-form">
       <div class="sales-board-formin">
         <div class="sales-board-formin-left">产品类型：</div>
-        <div class="sales-board-formin-right"></div>
+        <div class="sales-board-formin-right">
+          <v-selection :selections="versionList" @on-change="onParamChange('versions', $event)" style="margin-top: -5px"></v-selection>
+        </div>
       </div>
       <div class="sales-board-formin">
         <div class="sales-board-formin-left">适用地区：</div>
-        <div class="sales-board-formin-right"></div>
+        <div class="sales-board-formin-right">
+          <vchooser :selections="districts" @on-change="onParamChange('district', $event)" style="margin-top: -5px"></vchooser>
+        </div>
       </div>
       <div class="sales-board-formin">
         <div class="sales-board-formin-left">有效时间：</div>
-        <div class="sales-board-formin-right">半年</div>
+        <div class="sales-board-formin-right">
+          <vchooser :selections="periodLists" @on-change="onParamChange('periods', $event)" style="margin-top: -5px"></vchooser>
+        </div>
       </div>
       <div class="sales-board-formin">
         <div class="sales-board-formin-left">总价：</div>
@@ -81,5 +87,78 @@
 </style>
 
 <script type="text/ecmascript-6">
-    export default{};
+  import VSelection from '../../components/selection.vue';
+  import vchooser from '../../components/chooser.vue';
+  import vmultiplychooser from '../../components/multiplychooser.vue';
+
+    export default{
+      data() {
+        return {
+          versionList: [
+            {
+              label: '红色版',
+              value: 0
+            },
+            {
+              label: '绿色版',
+              value: 1
+            },
+            {
+              label: '紫色版',
+              value: 2
+            }
+          ],
+          districts: [
+            {
+              label: '北京',
+              value: 0
+            },
+            {
+              label: '上海',
+              value: 1
+            },
+            {
+              label: '广州',
+              value: 2
+            },
+            {
+              label: '天津',
+              value: 3
+            },
+            {
+              label: '武汉',
+              value: 4
+            },
+            {
+              label: '重庆',
+              value: 5
+            }
+          ],
+          periodLists: [
+            {
+              label: '半年',
+              value: 0
+            },
+            {
+              label: '一年',
+              value: 1
+            },
+            {
+              label: '三年',
+              value: 2
+            }
+          ]
+        };
+      },
+      components: {
+        VSelection,
+        vchooser,
+        vmultiplychooser
+      },
+      methods: {
+        onParamChange(attr, val) {
+          this[attr] = val;
+        }
+      }
+    };
 </script>

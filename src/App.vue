@@ -84,7 +84,7 @@
 <style scoped lang="stylus" rel="stylesheet/stylus">
   .header
     background: #363636;
-    width 1370px
+    width 100%
     height 80px
     line-height: 80px
     .app-head-inner

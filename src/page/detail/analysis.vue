@@ -9,7 +9,7 @@
       <div class="sales-board-formin">
         <div class="sales-board-formin-left">购买数量：</div>
         <div class="sales-board-formin-right">
-          <counter></counter>
+          <counter style="margin-top: -5px"></counter>
         </div>
       </div>
       <div class="sales-board-formin">
@@ -21,13 +21,21 @@
       <div class="sales-board-formin">
         <div class="sales-board-formin-left">有效时间：</div>
         <div class="sales-board-formin-right">
-          <vchooser :selections="periodLists" @on-change="onParamChange('buyType', $event)" style="margin-top: -5px"></vchooser>
+          <vchooser :selections="periodLists" @on-change="onParamChange('periods', $event)" style="margin-top: -5px"></vchooser>
         </div>
       </div>
       <div class="sales-board-formin">
         <div class="sales-board-formin-left">产品版本：</div>
         <div class="sales-board-formin-right">
           <vmultiplychooser :selections="versionList" @on-change="onParamChange('versions', $event)" style="margin-top: -5px"></vmultiplychooser>
+        </div>
+      </div>
+      <div class="sales-board-formin">
+        <div class="sales-board-formin-left">&nbsp;</div>
+        <div class="sales-board-formin-right">
+          <button>
+            立即购买
+          </button>
         </div>
       </div>
     </div>
