@@ -1,5 +1,29 @@
 <template>
   <div class="sales-board">
+    <mydialog :is-show="isShowPayDialog" @on-close="hidePayDialog" class="mydialog">
+      <table class="buy-dialog-table">
+        <tr>
+          <th>购买数量</th>
+          <th>产品类型</th>
+          <th>有效时间</th>
+          <th>产品版本</th>
+          <th>总价</th>
+        </tr>
+        <tr>
+          <td>123</td>
+          <td>123</td>
+          <td>123</td>
+          <td>
+            123
+          </td>
+          <td>123</td>
+        </tr>
+      </table>
+      <h3 class="buy-dialog-title">请选择银行</h3>
+      <button class="buy-dialog-button">
+        立即购买
+      </button>
+    </mydialog>
     <div class="sales-board-intro">
       <h2 class="sales-board-intro-h2">数据统计</h2>
       <p class="sales-board-intro-p">历史资料、科学实验、检验、统计等所获得的和用于科学研究、技术设计、查证、决策等的数值加以统计为解决方案做前期准备。</p>
@@ -30,7 +54,7 @@
       <div class="sales-board-formin">
         <div class="sales-board-formin-left">&nbsp;</div>
         <div class="sales-board-formin-right">
-          <button class="sales-board-formin-right-button">
+          <button class="sales-board-formin-right-button" @click="showPayDialog">
             立即购买
           </button>
         </div>
@@ -48,6 +72,36 @@
 <style lang="stylus" rel="stylesheet/stylus">
   .sales-board
     background white
+    .buy-dialog-table
+      width: 100%
+      margin-top 20px
+      margin-bottom: 20px
+      th
+        border: 1px solid #e3e3e3
+        text-align center
+        padding: 5px 0
+      td
+        border: 1px solid #fff
+        text-align center
+        padding: 5px 0
+        background: #4fc08d
+        color: #fff
+    h3
+      margin-left 20px
+      font-size: 16px
+      font-weight: bold
+    .buy-dialog-button
+      margin 19px
+      background #41B883
+      color: #fff
+      border-radius 3px
+      border 1px solid #41B883
+      box-shadow: 1px 1px 1px #888888
+      cursor pointer
+      width 92px
+      height 35px
+      &:active
+        background #16af6b
     .sales-board-intro
       background white
       .sales-board-intro-h2
@@ -101,10 +155,11 @@
   import VSelection from '../../components/selection.vue';
   import vchooser from '../../components/chooser.vue';
   import vmultiplychooser from '../../components/multiplychooser.vue';
-
+  import mydialog from '../../components/mydialog.vue';
     export default{
       data() {
         return {
+          isShowPayDialog: false,
           versionList: [
             {
               label: '红色版',
@@ -164,11 +219,19 @@
       components: {
         VSelection,
         vchooser,
-        vmultiplychooser
+        vmultiplychooser,
+        mydialog
       },
       methods: {
         onParamChange(attr, val) {
           this[attr] = val;
+        },
+        showPayDialog () {
+          this.$emit('on-dialog', this.isShowPayDialog = true);
+          this.isShowPayDialog = true;
+        },
+        hidePayDialog () {
+          this.isShowPayDialog = false;
         }
       }
     };

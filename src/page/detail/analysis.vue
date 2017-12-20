@@ -1,26 +1,30 @@
 <template>
-  <div>
-    <mydialog :is-show="isShowPayDialog" @on-close="hidePayDialog" class="mydialog">
-    <table class="buy-dialog-table">
-      <tr>
-        <th>购买数量</th>
-        <th>产品类型</th>
-        <th>有效时间</th>
-        <th>产品版本</th>
-        <th>总价</th>
-      </tr>
-      <tr>
-        <td>{{ buyNum }}</td>
-        <td>{{ buyType.label }}</td>
-        <td>{{ period.label }}</td>
-        <td>
-          <span v-for="item in versions">{{ item.label }}</span>
-        </td>
-        <td>{{ price }}</td>
-      </tr>
-    </table>
-  </mydialog>
+
   <div class="sales-board">
+    <mydialog :is-show="isShowPayDialog" @on-close="hidePayDialog" class="mydialog">
+      <table class="buy-dialog-table">
+        <tr>
+          <th>购买数量</th>
+          <th>产品类型</th>
+          <th>有效时间</th>
+          <th>产品版本</th>
+          <th>总价</th>
+        </tr>
+        <tr>
+          <td>{{ buyNum }}</td>
+          <td>{{ buyType.label }}</td>
+          <td>{{ period.label }}</td>
+          <td>
+            <span v-for="item in versions">{{ item.label }}</span>
+          </td>
+          <td>{{ price }}</td>
+        </tr>
+      </table>
+      <h3 class="buy-dialog-title">请选择银行</h3>
+      <button class="buy-dialog-button">
+        立即购买
+      </button>
+    </mydialog>
     <div class="sales-board-intro">
       <h2 class="sales-board-intro-h2">流量分析</h2>
       <p class="sales-board-intro-p">
@@ -91,12 +95,42 @@
       </ul>
     </div>
   </div>
-  </div>
 </template>
 
 <style lang="stylus" rel="stylesheet/stylus">
   .sales-board
     background white
+    position relative
+    .buy-dialog-table
+      width: 100%
+      margin-top 20px
+      margin-bottom: 20px
+      th
+        border: 1px solid #e3e3e3
+        text-align center
+        padding: 5px 0
+      td
+        border: 1px solid #fff
+        text-align center
+        padding: 5px 0
+        background: #4fc08d
+        color: #fff
+    h3
+      margin-left 20px
+      font-size: 16px
+      font-weight: bold
+    .buy-dialog-button
+        margin 19px
+        background #41B883
+        color: #fff
+        border-radius 3px
+        border 1px solid #41B883
+        box-shadow: 1px 1px 1px #888888
+        cursor pointer
+        width 92px
+        height 35px
+        &:active
+          background #16af6b
     .sales-board-intro
       background white
       .sales-board-intro-h2

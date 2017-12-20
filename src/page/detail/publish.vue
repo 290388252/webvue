@@ -1,5 +1,29 @@
 <template>
   <div class="sales-board">
+    <mydialog :is-show="isShowPayDialog" @on-close="hidePayDialog" class="mydialog">
+      <table class="buy-dialog-table">
+        <tr>
+          <th>购买数量</th>
+          <th>产品类型</th>
+          <th>有效时间</th>
+          <th>产品版本</th>
+          <th>总价</th>
+        </tr>
+        <tr>
+          <td>123</td>
+          <td>123</td>
+          <td>123</td>
+          <td>
+            123
+          </td>
+          <td>123</td>
+        </tr>
+      </table>
+      <h3 class="buy-dialog-title">请选择银行</h3>
+      <button class="buy-dialog-button">
+        立即购买
+      </button>
+    </mydialog>
     <div class="sales-board-intro">
       <h2 class="sales-board-intro-h2">广告发布</h2>
       <p class="sales-board-intro-p">广告活动按照广告计划执行，到完成广告创作并形成广告作品之后，经过广告主的最后审核同意，即可送到预定的媒介发布刊播。这项工作一般由媒介部门的有关专业人员负责，他们的任务就是专门负责与有关媒介单位接洽，安排有关广告的发播事宜，并对发播质量实施监督。</p>
@@ -36,7 +60,7 @@
       <div class="sales-board-formin">
         <div class="sales-board-formin-left">&nbsp;</div>
         <div class="sales-board-formin-right">
-          <button class="sales-board-formin-right-button">
+          <button class="sales-board-formin-right-button" @click="showPayDialog">
             立即购买
           </button>
         </div>
@@ -53,6 +77,36 @@
 <style lang="stylus" rel="stylesheet/stylus">
   .sales-board
     background white
+    .buy-dialog-table
+      width: 100%
+      margin-top 20px
+      margin-bottom: 20px
+      th
+        border: 1px solid #e3e3e3
+        text-align center
+        padding: 5px 0
+      td
+        border: 1px solid #fff
+        text-align center
+        padding: 5px 0
+        background: #4fc08d
+        color: #fff
+    h3
+      margin-left 20px
+      font-size: 16px
+      font-weight: bold
+    .buy-dialog-button
+      margin 19px
+      background #41B883
+      color: #fff
+      border-radius 3px
+      border 1px solid #41B883
+      box-shadow: 1px 1px 1px #888888
+      cursor pointer
+      width 92px
+      height 35px
+      &:active
+        background #16af6b
     .sales-board-intro
       background white
       .sales-board-intro-h2
@@ -107,10 +161,11 @@
     import vchooser from '../../components/chooser.vue';
     import vmultiplychooser from '../../components/multiplychooser.vue';
     import counter from '../../components/counter.vue';
-
+    import mydialog from '../../components/mydialog.vue';
     export default{
       data() {
         return {
+          isShowPayDialog: false,
           tradeList: [
             {
               label: '出版业',
@@ -181,11 +236,19 @@
         VSelection,
         vchooser,
         vmultiplychooser,
-        counter
+        counter,
+        mydialog
       },
       methods: {
         onParamChange(attr, val) {
           this[attr] = val;
+        },
+        showPayDialog () {
+          this.$emit('on-dialog', this.isShowPayDialog = true);
+          this.isShowPayDialog = true;
+        },
+        hidePayDialog () {
+          this.isShowPayDialog = false;
         }
       }
     };
