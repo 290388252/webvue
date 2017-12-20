@@ -1,4 +1,25 @@
 <template>
+  <div>
+    <mydialog :is-show="isShowPayDialog" @on-close="hidePayDialog" class="mydialog">
+    <table class="buy-dialog-table">
+      <tr>
+        <th>购买数量</th>
+        <th>产品类型</th>
+        <th>有效时间</th>
+        <th>产品版本</th>
+        <th>总价</th>
+      </tr>
+      <tr>
+        <td>{{ buyNum }}</td>
+        <td>{{ buyType.label }}</td>
+        <td>{{ period.label }}</td>
+        <td>
+          <span v-for="item in versions">{{ item.label }}</span>
+        </td>
+        <td>{{ price }}</td>
+      </tr>
+    </table>
+  </mydialog>
   <div class="sales-board">
     <div class="sales-board-intro">
       <h2 class="sales-board-intro-h2">流量分析</h2>
@@ -9,7 +30,7 @@
       <div class="sales-board-formin">
         <div class="sales-board-formin-left">购买数量：</div>
         <div class="sales-board-formin-right">
-          <counter style="margin-top: -5px"></counter>
+          <counter @on-change="onParamChange('buyNum', $event)" style="margin-top: -5px"></counter>
         </div>
       </div>
       <div class="sales-board-formin">
@@ -21,7 +42,7 @@
       <div class="sales-board-formin">
         <div class="sales-board-formin-left">有效时间：</div>
         <div class="sales-board-formin-right">
-          <vchooser :selections="periodLists" @on-change="onParamChange('periods', $event)" style="margin-top: -5px"></vchooser>
+          <vchooser :selections="periodLists" @on-change="onParamChange('period', $event)" style="margin-top: -5px"></vchooser>
         </div>
       </div>
       <div class="sales-board-formin">
@@ -31,9 +52,15 @@
         </div>
       </div>
       <div class="sales-board-formin">
+        <div class="sales-board-formin-left">价格：</div>
+        <div class="sales-board-formin-right">
+          {{price}}
+        </div>
+      </div>
+      <div class="sales-board-formin">
         <div class="sales-board-formin-left">&nbsp;</div>
         <div class="sales-board-formin-right">
-          <button class="sales-board-formin-right-button">
+          <button class="sales-board-formin-right-button" @click="showPayDialog">
             立即购买
           </button>
         </div>
@@ -63,6 +90,7 @@
         <li>用户所在地理区域分布状况等</li>
       </ul>
     </div>
+  </div>
   </div>
 </template>
 
@@ -131,10 +159,28 @@
   import vchooser from '../../components/chooser.vue';
   import vmultiplychooser from '../../components/multiplychooser.vue';
   import counter from '../../components/counter.vue';
-
+  import mydialog from '../../components/mydialog.vue';
+  import _ from 'lodash';
   export default{
       data() {
           return {
+            isShowPayDialog: false,
+            buyNum: 0,
+            buyType: {
+              label: '入门版',
+              value: 0
+            },
+            versions: [
+              {
+                label: '客户版',
+                value: 0
+              }
+            ],
+            period: {
+              label: '半年',
+              value: 0
+            },
+            price: 0,
             versionList: [
               {
                 label: '客户版',
@@ -183,11 +229,36 @@
         VSelection,
         vchooser,
         vmultiplychooser,
-        counter
+        counter,
+        mydialog
       },
       methods: {
         onParamChange(attr, val) {
             this[attr] = val;
+            this.getPrice();
+        },
+        getPrice() {
+            let buyVersionsArray = _.map(this.versions, (item) => {
+                return item.value;
+            });
+            let reqParams = {
+              buyNum: this.buyNum,
+              buyType: this.buyType.value,
+              versions: buyVersionsArray.join(','),
+              period: this.period.value
+            };
+            console.log(reqParams);
+            this.$http.get('/api/getPrice').then((res) => {
+                console.log(res);
+                this.price = res.body.amount;
+            });
+        },
+        showPayDialog () {
+          this.$emit('on-dialog', this.isShowPayDialog = true);
+          this.isShowPayDialog = true;
+        },
+        hidePayDialog () {
+          this.isShowPayDialog = false;
         }
       }
   };

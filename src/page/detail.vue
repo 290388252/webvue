@@ -1,4 +1,5 @@
 <template>
+  <div>
     <div class="detail-wrap">
       <div class="detail-left">
         <div class="product-board">
@@ -16,6 +17,7 @@
         </keep-alive>
       </div>
     </div>
+  </div>
 </template>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">

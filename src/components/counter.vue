@@ -45,6 +45,11 @@
           number: this.min
         };
       },
+      watch: {
+          number() {
+          this.$emit('on-change', this.number);
+        }
+      },
       methods: {
         adds() {
           if (this.number >= this.max) {

@@ -15,7 +15,7 @@
 <style lang="stylus" rel="stylesheet/stylus">
     .dialog
       position fixed
-      z-index: 5;
+      z-index: 10;
       width 100%
       height 100%
       background: #000;
