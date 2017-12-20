@@ -25,7 +25,6 @@
     width 1370px
     padding: 20px;
     overflow: hidden;
-    z-index -1
     .detail-left
       float left
       width 20%
@@ -51,7 +50,6 @@
       width 75%
       margin-left 20px
       background white
-      z-index 5
 </style>
 
 <script type="text/ecmascript-6">

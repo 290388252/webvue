@@ -18,7 +18,7 @@
       z-index: 10;
       width 100%
       height 100%
-      background: #000;
+      background: #000
       opacity: .3;
     .drop-enter-active
       transition all .3s

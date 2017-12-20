@@ -97,7 +97,7 @@
       font-weight: bold
     .buy-dialog-button
       margin 19px
-      background #41B883
+      background #41B883;
       color: #fff
       border-radius 3px
       border 1px solid #41B883

@@ -71,7 +71,7 @@
 
 <style lang="stylus" rel="stylesheet/stylus">
   .sales-board
-    background white
+    background white;
     .buy-dialog-table
       width: 100%
       margin-top 20px
