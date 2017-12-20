@@ -30,7 +30,7 @@
       <div class="sales-board-formin">
         <div class="sales-board-formin-left">&nbsp;</div>
         <div class="sales-board-formin-right">
-          <button>
+          <button class="sales-board-formin-right-button">
             立即购买
           </button>
         </div>
@@ -68,6 +68,17 @@
           display inline-block
         .sales-board-formin-right
           display inline-block
+          .sales-board-formin-right-button
+            background #41B883
+            color: #fff
+            border-radius 3px
+            border 1px solid #41B883
+            box-shadow: 1px 1px 1px #888888
+            cursor pointer
+            width 92px
+            height 35px
+            &:active
+              background #16af6b
     .sales-board-line
       background #ededed
       width 100%

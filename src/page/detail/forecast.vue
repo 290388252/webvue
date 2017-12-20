@@ -13,7 +13,9 @@
       </div>
       <div class="sales-board-formin">
         <div class="sales-board-formin-left">媒介：</div>
-        <div class="sales-board-formin-right"></div>
+        <div class="sales-board-formin-right">
+          <vmultiplychooser :selections="versionList" @on-change="onParamChange('versions', $event)" style="margin-top: -5px"></vmultiplychooser>
+        </div>
       </div>
       <div class="sales-board-formin">
         <div class="sales-board-formin-left">有效时间：</div>
@@ -28,7 +30,7 @@
       <div class="sales-board-formin">
         <div class="sales-board-formin-left">&nbsp;</div>
         <div class="sales-board-formin-right">
-          <button>
+          <button class="sales-board-formin-right-button">
             立即购买
           </button>
         </div>
@@ -69,6 +71,17 @@
           display inline-block
         .sales-board-formin-right
           display inline-block
+          .sales-board-formin-right-button
+            background #41B883
+            color: #fff
+            border-radius 3px
+            border 1px solid #41B883
+            box-shadow: 1px 1px 1px #888888
+            cursor pointer
+            width 92px
+            height 35px
+            &:active
+              background #16af6b
     .sales-board-line
       background #ededed
       width 100%
@@ -89,6 +102,7 @@
 
 <script type="text/ecmascript-6">
   import vchooser from '../../components/chooser.vue';
+  import vmultiplychooser from '../../components/multiplychooser.vue';
   import counter from '../../components/counter.vue';
     export default{
       data() {
@@ -106,12 +120,31 @@
               label: '三年',
               value: 2
             }
+          ],
+          versionList: [
+            {
+              label: '纸质报告',
+              value: 0
+            },
+            {
+              label: 'pdf',
+              value: 1
+            },
+            {
+              label: '页面报告',
+              value: 2
+            },
+            {
+              label: '邮件',
+              value: 3
+            }
           ]
         };
       },
       components: {
         vchooser,
-        counter
+        counter,
+        vmultiplychooser
       },
       methods: {
         onParamChange(attr, val) {
