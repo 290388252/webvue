@@ -21,6 +21,7 @@
         </tr>
       </table>
       <h3 class="buy-dialog-title">请选择银行</h3>
+      <bankchooser></bankchooser>
       <button class="buy-dialog-button">
         立即购买
       </button>
@@ -194,6 +195,8 @@
   import vmultiplychooser from '../../components/multiplychooser.vue';
   import counter from '../../components/counter.vue';
   import mydialog from '../../components/mydialog.vue';
+  import bankchooser from '../../components/bankChooser'
+
   import _ from 'lodash';
   export default{
       data() {
@@ -264,7 +267,8 @@
         vchooser,
         vmultiplychooser,
         counter,
-        mydialog
+        mydialog,
+        bankchooser
       },
       methods: {
         onParamChange(attr, val) {
