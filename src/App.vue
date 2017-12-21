@@ -17,15 +17,15 @@
         </router-link>
         <div class="head-nav">
           <ul class="nav-list">
-            <li class="text" @click="login" v-if="username === ''">登录</li>
-            <li class="nav-pile" v-if="username === ''">|</li>
-            <li class="text" @click="reg" v-if="username === ''">注册</li>
-            <li class="nav-pile" v-if="username === ''">|</li>
-            <li class="text" v-if="username !== ''">{{username}}</li>
-            <li class="nav-pile" v-if="username !== ''">|</li>
-            <li class="text" v-if="username !== ''">退出</li>
-            <li class="nav-pile" v-if="username !== ''">|</li>
-            <li class="text" @click="about">关于</li>
+            <li class="text navli" @click="login" v-if="username === ''">登录</li>
+            <li class="nav-pile navli" v-if="username === ''">|</li>
+            <li class="text navli" @click="reg" v-if="username === ''">注册</li>
+            <li class="nav-pile navli" v-if="username === ''">|</li>
+            <li class="text navli" v-if="username !== ''">{{username}}</li>
+            <li class="nav-pile navli" v-if="username !== ''">|</li>
+            <li class="text navli" v-if="username !== ''">退出</li>
+            <li class="nav-pile navli" v-if="username !== ''">|</li>
+            <li class="text navli" @click="about">关于</li>
           </ul>
         </div>
       </div>
@@ -99,7 +99,7 @@
         margin-right 5px
         .nav-list
           float: left
-          li
+          .navli
             list-style: none;
             float: left
             margin-right 5px

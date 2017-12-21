@@ -21,7 +21,7 @@
         </tr>
       </table>
       <h3 class="buy-dialog-title">请选择银行</h3>
-      <bankchooser></bankchooser>
+      <bankchooser style="margin-top: 5px"></bankchooser>
       <button class="buy-dialog-button">
         立即购买
       </button>
@@ -121,7 +121,7 @@
       font-size: 16px
       font-weight: bold
     .buy-dialog-button
-        margin 19px
+        margin 5px
         background #41B883
         color: #fff
         border-radius 3px
@@ -195,7 +195,7 @@
   import vmultiplychooser from '../../components/multiplychooser.vue';
   import counter from '../../components/counter.vue';
   import mydialog from '../../components/mydialog.vue';
-  import bankchooser from '../../components/bankChooser'
+  import bankchooser from '../../components/bankChooser';
 
   import _ from 'lodash';
   export default{

@@ -1,8 +1,8 @@
 <template>
   <div class="chooser-component">
     <div class="chooser-list">
-      <ul v-for="(item, index) in selections">
-        <li @click="toggleSelection(index)" :class="{active: checkActive(index)}">
+      <ul class="chooser-ul" v-for="(item, index) in selections">
+        <li class="chooser-li" @click="toggleSelection(index)" :class="{active: checkActive(index)}">
           {{item.label}}
         </li>
       </ul>
@@ -13,9 +13,9 @@
 <style lang="stylus" rel="stylesheet/stylus">
   .chooser-component
     display inline-block
-    ul
+    .chooser-ul
       display inline-block
-      li
+      .chooser-li
         display inline-block
         border: 1px solid #e3e3e3
         height 25px
