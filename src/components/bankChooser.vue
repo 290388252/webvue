@@ -1,7 +1,7 @@
 <template>
     <div class="chooser-component">
       <ul class="chooser-list">
-        <li class="chooser-list-li" v-for="(item, index) in banks" :class="item.name">
+        <li class="chooser-list-li" v-for="(item, index) in banks" @click="chooseSelection(index)" :class="[item.name, {active: index === nowIndex}]">
         </li>
       </ul>
     </div>
@@ -22,6 +22,8 @@
         cursor: pointer
         &:hover
           border: 1px solid #41B883
+    .active
+      border: 1px solid #41B883
     .huaxia
       background-position: -2040px 0
     .jianshe
@@ -33,7 +35,7 @@
     .gongshang
       background-position: -2640px 0
     .nongye
-      background-position: -1680px 0
+      background-position: -1683px 0
     .zhongguo
       background-position: -2520px 0
     .zhongxin
@@ -88,6 +90,12 @@
             }
           ]
         };
+      },
+      methods: {
+        chooseSelection(index) {
+          this.nowIndex = index;
+          this.$emit('on-change', this.banks[index]);
+        }
       }
     };
 </script>

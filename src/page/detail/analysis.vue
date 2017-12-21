@@ -21,7 +21,7 @@
         </tr>
       </table>
       <h3 class="buy-dialog-title">请选择银行</h3>
-      <bankchooser style="margin-top: 5px"></bankchooser>
+      <bankchooser style="margin-top: 5px" @on-change="onChangeBanks"></bankchooser>
       <button class="buy-dialog-button">
         立即购买
       </button>
@@ -201,6 +201,7 @@
   export default{
       data() {
           return {
+            bankId: null,
             isShowPayDialog: false,
             buyNum: 0,
             buyType: {
@@ -297,6 +298,9 @@
         },
         hidePayDialog () {
           this.isShowPayDialog = false;
+        },
+        onChangeBanks(bankObj) {
+          this.bankId = bankObj.id;
         }
       }
   };
